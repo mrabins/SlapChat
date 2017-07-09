@@ -12,6 +12,8 @@
 		13642E6D1F1183D1008174AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13642E6B1F1183D1008174AB /* Main.storyboard */; };
 		13642E6F1F1183D1008174AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13642E6E1F1183D1008174AB /* Assets.xcassets */; };
 		13642E721F1183D1008174AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13642E701F1183D1008174AB /* LaunchScreen.storyboard */; };
+		13642E911F12029C008174AB /* AAPLCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13642E8E1F12029C008174AB /* AAPLCameraViewController.m */; };
+		13642E921F12029C008174AB /* AAPLPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13642E901F12029C008174AB /* AAPLPreviewView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,12 @@
 		13642E6E1F1183D1008174AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13642E711F1183D1008174AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13642E731F1183D1008174AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13642E8B1F12029C008174AB /* SlapChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SlapChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		13642E8C1F12029C008174AB /* AAPLCameraVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCameraVCDelegate.h; sourceTree = "<group>"; };
+		13642E8D1F12029C008174AB /* AAPLCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCameraViewController.h; sourceTree = "<group>"; };
+		13642E8E1F12029C008174AB /* AAPLCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCameraViewController.m; sourceTree = "<group>"; };
+		13642E8F1F12029C008174AB /* AAPLPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPreviewView.h; sourceTree = "<group>"; };
+		13642E901F12029C008174AB /* AAPLPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPreviewView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,44 @@
 		13642E661F1183D1008174AB /* SlapChat */ = {
 			isa = PBXGroup;
 			children = (
+				13642E951F1202C0008174AB /* Controller */,
+				13642E941F1202B6008174AB /* View */,
+				13642E931F1202B0008174AB /* Model */,
 				13642E671F1183D1008174AB /* AppDelegate.swift */,
-				13642E691F1183D1008174AB /* ViewController.swift */,
 				13642E6B1F1183D1008174AB /* Main.storyboard */,
 				13642E6E1F1183D1008174AB /* Assets.xcassets */,
 				13642E701F1183D1008174AB /* LaunchScreen.storyboard */,
 				13642E731F1183D1008174AB /* Info.plist */,
+				13642E8B1F12029C008174AB /* SlapChat-Bridging-Header.h */,
 			);
 			path = SlapChat;
+			sourceTree = "<group>";
+		};
+		13642E931F1202B0008174AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		13642E941F1202B6008174AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				13642E8C1F12029C008174AB /* AAPLCameraVCDelegate.h */,
+				13642E8F1F12029C008174AB /* AAPLPreviewView.h */,
+				13642E901F12029C008174AB /* AAPLPreviewView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		13642E951F1202C0008174AB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				13642E8D1F12029C008174AB /* AAPLCameraViewController.h */,
+				13642E8E1F12029C008174AB /* AAPLCameraViewController.m */,
+				13642E691F1183D1008174AB /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +135,7 @@
 					13642E631F1183D1008174AB = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = RY4LKVN272;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -139,6 +178,8 @@
 			files = (
 				13642E6A1F1183D1008174AB /* ViewController.swift in Sources */,
 				13642E681F1183D1008174AB /* AppDelegate.swift in Sources */,
+				13642E911F12029C008174AB /* AAPLCameraViewController.m in Sources */,
+				13642E921F12029C008174AB /* AAPLPreviewView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,11 +302,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = RY4LKVN272;
 				INFOPLIST_FILE = SlapChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.SlapChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SlapChat/SlapChat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -274,11 +318,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = RY4LKVN272;
 				INFOPLIST_FILE = SlapChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.SlapChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SlapChat/SlapChat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -302,6 +348,7 @@
 				13642E781F1183D1008174AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

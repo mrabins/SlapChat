@@ -34,5 +34,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera Access Is Needed For Video And Photo Functions</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone Access Is Needed For Voice Control</string>
 </dict>
 </plist>
