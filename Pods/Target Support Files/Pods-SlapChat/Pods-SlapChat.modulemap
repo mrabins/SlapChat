@@ -1,0 +1,6 @@
+framework module Pods_SlapChat {
+  umbrella header "Pods-SlapChat-umbrella.h"
+
+  export *
+  module * { export * }
+}

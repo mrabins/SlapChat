@@ -14,6 +14,11 @@
 		13642E721F1183D1008174AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13642E701F1183D1008174AB /* LaunchScreen.storyboard */; };
 		13642E911F12029C008174AB /* AAPLCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13642E8E1F12029C008174AB /* AAPLCameraViewController.m */; };
 		13642E921F12029C008174AB /* AAPLPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13642E901F12029C008174AB /* AAPLPreviewView.m */; };
+		138E31091F15611F00036C45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 138E31081F15611F00036C45 /* GoogleService-Info.plist */; };
+		138E310B1F15949800036C45 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E310A1F15949800036C45 /* RoundTextField.swift */; };
+		138E310F1F1598DD00036C45 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E310E1F1598DD00036C45 /* RoundedButton.swift */; };
+		138E31111F159A3900036C45 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E31101F159A3900036C45 /* LogInVC.swift */; };
+		346D27769A5915E1635815F7 /* Pods_SlapChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD1A14E66238C7C7D3DBF3A /* Pods_SlapChat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,13 @@
 		13642E8E1F12029C008174AB /* AAPLCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCameraViewController.m; sourceTree = "<group>"; };
 		13642E8F1F12029C008174AB /* AAPLPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPreviewView.h; sourceTree = "<group>"; };
 		13642E901F12029C008174AB /* AAPLPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPreviewView.m; sourceTree = "<group>"; };
+		138E31081F15611F00036C45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		138E310A1F15949800036C45 /* RoundTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
+		138E310E1F1598DD00036C45 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		138E31101F159A3900036C45 /* LogInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
+		2AFE5F8D8CDC997D7FC3D03B /* Pods-SlapChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlapChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlapChat/Pods-SlapChat.release.xcconfig"; sourceTree = "<group>"; };
+		3FD1A14E66238C7C7D3DBF3A /* Pods_SlapChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlapChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91DA9E388742319D073A1D8C /* Pods-SlapChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlapChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlapChat/Pods-SlapChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				346D27769A5915E1635815F7 /* Pods_SlapChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,8 +59,11 @@
 		13642E5B1F1183D1008174AB = {
 			isa = PBXGroup;
 			children = (
+				138E31081F15611F00036C45 /* GoogleService-Info.plist */,
 				13642E661F1183D1008174AB /* SlapChat */,
 				13642E651F1183D1008174AB /* Products */,
+				6C8B9160F2E61FF73BB6BB02 /* Pods */,
+				6725673CDF4EF1B180D4EC00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +104,8 @@
 			children = (
 				13642E8F1F12029C008174AB /* AAPLPreviewView.h */,
 				13642E901F12029C008174AB /* AAPLPreviewView.m */,
+				138E310A1F15949800036C45 /* RoundTextField.swift */,
+				138E310E1F1598DD00036C45 /* RoundedButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -98,6 +116,7 @@
 				13642E8D1F12029C008174AB /* AAPLCameraViewController.h */,
 				13642E8E1F12029C008174AB /* AAPLCameraViewController.m */,
 				13642E691F1183D1008174AB /* ViewController.swift */,
+				138E31101F159A3900036C45 /* LogInVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -110,6 +129,23 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		6725673CDF4EF1B180D4EC00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FD1A14E66238C7C7D3DBF3A /* Pods_SlapChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6C8B9160F2E61FF73BB6BB02 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				91DA9E388742319D073A1D8C /* Pods-SlapChat.debug.xcconfig */,
+				2AFE5F8D8CDC997D7FC3D03B /* Pods-SlapChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -117,9 +153,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13642E761F1183D1008174AB /* Build configuration list for PBXNativeTarget "SlapChat" */;
 			buildPhases = (
+				1E63608FF92DE85715C8B133 /* [CP] Check Pods Manifest.lock */,
 				13642E601F1183D1008174AB /* Sources */,
 				13642E611F1183D1008174AB /* Frameworks */,
 				13642E621F1183D1008174AB /* Resources */,
+				F520FA453E3B1FF275ABFB56 /* [CP] Embed Pods Frameworks */,
+				3FD5141AD8C93A1D2E982D22 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -172,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13642E721F1183D1008174AB /* LaunchScreen.storyboard in Resources */,
+				138E31091F15611F00036C45 /* GoogleService-Info.plist in Resources */,
 				13642E6F1F1183D1008174AB /* Assets.xcassets in Resources */,
 				13642E6D1F1183D1008174AB /* Main.storyboard in Resources */,
 			);
@@ -179,13 +219,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1E63608FF92DE85715C8B133 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3FD5141AD8C93A1D2E982D22 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlapChat/Pods-SlapChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F520FA453E3B1FF275ABFB56 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlapChat/Pods-SlapChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		13642E601F1183D1008174AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				13642E6A1F1183D1008174AB /* ViewController.swift in Sources */,
+				138E310F1F1598DD00036C45 /* RoundedButton.swift in Sources */,
 				13642E681F1183D1008174AB /* AppDelegate.swift in Sources */,
+				138E31111F159A3900036C45 /* LogInVC.swift in Sources */,
+				138E310B1F15949800036C45 /* RoundTextField.swift in Sources */,
 				13642E911F12029C008174AB /* AAPLCameraViewController.m in Sources */,
 				13642E921F12029C008174AB /* AAPLPreviewView.m in Sources */,
 			);
@@ -308,6 +399,7 @@
 		};
 		13642E771F1183D1008174AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91DA9E388742319D073A1D8C /* Pods-SlapChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -325,6 +417,7 @@
 		};
 		13642E781F1183D1008174AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AFE5F8D8CDC997D7FC3D03B /* Pods-SlapChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
