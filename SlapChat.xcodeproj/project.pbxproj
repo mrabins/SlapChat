@@ -62,6 +62,7 @@
 		13642E661F1183D1008174AB /* SlapChat */ = {
 			isa = PBXGroup;
 			children = (
+				13A0614F1F15271800748FC2 /* Protocols */,
 				13642E951F1202C0008174AB /* Controller */,
 				13642E941F1202B6008174AB /* View */,
 				13642E931F1202B0008174AB /* Model */,
@@ -85,7 +86,6 @@
 		13642E941F1202B6008174AB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				13642E8C1F12029C008174AB /* AAPLCameraVCDelegate.h */,
 				13642E8F1F12029C008174AB /* AAPLPreviewView.h */,
 				13642E901F12029C008174AB /* AAPLPreviewView.m */,
 			);
@@ -100,6 +100,14 @@
 				13642E691F1183D1008174AB /* ViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		13A0614F1F15271800748FC2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				13642E8C1F12029C008174AB /* AAPLCameraVCDelegate.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +313,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = RY4LKVN272;
 				INFOPLIST_FILE = SlapChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.SlapChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -321,6 +330,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = RY4LKVN272;
 				INFOPLIST_FILE = SlapChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.SlapChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";

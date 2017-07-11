@@ -371,7 +371,7 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 	BOOL showResumeButton = NO;
 
 	// In iOS 9 and later, the userInfo dictionary contains information on why the session was interrupted.
-	if ( &AVCaptureSessionInterruptionReasonKey ) {
+	if ( &AVCaptureSessionInterruptionReasonKey) {
 		AVCaptureSessionInterruptionReason reason = [notification.userInfo[AVCaptureSessionInterruptionReasonKey] integerValue];
 		NSLog( @"Capture session was interrupted with reason %ld", (long)reason );
 
@@ -453,97 +453,96 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 
 - (void)toggleMovieRecording
 {
-	// Disable the Camera button until recording finishes, and disable the Record button until recording starts or finishes. See the
-	// AVCaptureFileOutputRecordingDelegate methods.
+    // Disable the Camera button until recording finishes, and disable the Record button until recording starts or finishes. See the
+    // AVCaptureFileOutputRecordingDelegate methods.
     [self.delegate shouldEnableRecordUI:NO];
     [self.delegate shouldEnableCameraUI:NO];
-
-	dispatch_async( self.sessionQueue, ^{
-		if ( ! self.movieFileOutput.isRecording ) {
-			if ( [UIDevice currentDevice].isMultitaskingSupported ) {
-				// Setup background task. This is needed because the -[captureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:]
-				// callback is not received until AVCam returns to the foreground unless you request background execution time.
-				// This also ensures that there will be time to write the file to the photo library when AVCam is backgrounded.
-				// To conclude this background execution, -endBackgroundTask is called in
-				// -[captureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:] after the recorded file has been saved.
-				self.backgroundRecordingID = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
-			}
-
-			// Update the orientation on the movie file output video connection before starting recording.
-			AVCaptureConnection *connection = [self.movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
-			AVCaptureVideoPreviewLayer *previewLayer = (AVCaptureVideoPreviewLayer *)self._previewView.layer;
-			connection.videoOrientation = previewLayer.connection.videoOrientation;
-
-			// Turn OFF flash for video recording.
-			[AAPLCameraViewController setFlashMode:AVCaptureFlashModeOff forDevice:self.videoDeviceInput.device];
-
-			// Start recording to a temporary file.
-			NSString *outputFileName = [NSProcessInfo processInfo].globallyUniqueString;
-			NSString *outputFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[outputFileName stringByAppendingPathExtension:@"mov"]];
-			[self.movieFileOutput startRecordingToOutputFileURL:[NSURL fileURLWithPath:outputFilePath] recordingDelegate:self];
-		}
-		else {
-			[self.movieFileOutput stopRecording];
-		}
-	} );
+    
+    dispatch_async( self.sessionQueue, ^{
+        if ( ! self.movieFileOutput.isRecording ) {
+            if ( [UIDevice currentDevice].isMultitaskingSupported ) {
+                // Setup background task. This is needed because the -[captureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:]
+                // callback is not received until AVCam returns to the foreground unless you request background execution time.
+                // This also ensures that there will be time to write the file to the photo library when AVCam is backgrounded.
+                // To conclude this background execution, -endBackgroundTask is called in
+                // -[captureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:] after the recorded file has been saved.
+                self.backgroundRecordingID = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
+            }
+            
+            // Update the orientation on the movie file output video connection before starting recording.
+            AVCaptureConnection *connection = [self.movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+            AVCaptureVideoPreviewLayer *previewLayer = (AVCaptureVideoPreviewLayer *)self._previewView.layer;
+            connection.videoOrientation = previewLayer.connection.videoOrientation;
+            
+            // Turn OFF flash for video recording.
+            [AAPLCameraViewController setFlashMode:AVCaptureFlashModeOff forDevice:self.videoDeviceInput.device];
+            
+            // Start recording to a temporary file.
+            NSString *outputFileName = [NSProcessInfo processInfo].globallyUniqueString;
+            NSString *outputFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[outputFileName stringByAppendingPathExtension:@"mov"]];
+            [self.movieFileOutput startRecordingToOutputFileURL:[NSURL fileURLWithPath:outputFilePath] recordingDelegate:self];
+        }
+        else {
+            [self.movieFileOutput stopRecording];
+        }
+    } );
 }
-
 - (void)changeCamera
 {
     [self.delegate shouldEnableCameraUI:NO];
     [self.delegate shouldEnableRecordUI:NO];
-	self.stillButton.enabled = NO;
-
-	dispatch_async( self.sessionQueue, ^{
-		AVCaptureDevice *currentVideoDevice = self.videoDeviceInput.device;
-		AVCaptureDevicePosition preferredPosition = AVCaptureDevicePositionUnspecified;
-		AVCaptureDevicePosition currentPosition = currentVideoDevice.position;
-
-		switch ( currentPosition )
-		{
-			case AVCaptureDevicePositionUnspecified:
-			case AVCaptureDevicePositionFront:
-				preferredPosition = AVCaptureDevicePositionBack;
-				break;
-			case AVCaptureDevicePositionBack:
-				preferredPosition = AVCaptureDevicePositionFront;
-				break;
-		}
-
-		AVCaptureDevice *videoDevice = [AAPLCameraViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:preferredPosition];
-		AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:nil];
-
-		[self.session beginConfiguration];
-
-		// Remove the existing device input first, since using the front and back camera simultaneously is not supported.
-		[self.session removeInput:self.videoDeviceInput];
-
-		if ( [self.session canAddInput:videoDeviceInput] ) {
-			[[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:currentVideoDevice];
-
-			[AAPLCameraViewController setFlashMode:AVCaptureFlashModeAuto forDevice:videoDevice];
-			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectAreaDidChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:videoDevice];
-
-			[self.session addInput:videoDeviceInput];
-			self.videoDeviceInput = videoDeviceInput;
-		}
-		else {
-			[self.session addInput:self.videoDeviceInput];
-		}
-
-		AVCaptureConnection *connection = [self.movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
-		if ( connection.isVideoStabilizationSupported ) {
-			connection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
-		}
-
-		[self.session commitConfiguration];
-
-		dispatch_async( dispatch_get_main_queue(), ^{
+    self.stillButton.enabled = NO;
+    
+    dispatch_async( self.sessionQueue, ^{
+        AVCaptureDevice *currentVideoDevice = self.videoDeviceInput.device;
+        AVCaptureDevicePosition preferredPosition = AVCaptureDevicePositionUnspecified;
+        AVCaptureDevicePosition currentPosition = currentVideoDevice.position;
+        
+        switch ( currentPosition )
+        {
+            case AVCaptureDevicePositionUnspecified:
+            case AVCaptureDevicePositionFront:
+                preferredPosition = AVCaptureDevicePositionBack;
+                break;
+            case AVCaptureDevicePositionBack:
+                preferredPosition = AVCaptureDevicePositionFront;
+                break;
+        }
+        
+        AVCaptureDevice *videoDevice = [AAPLCameraViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:preferredPosition];
+        AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:nil];
+        
+        [self.session beginConfiguration];
+        
+        // Remove the existing device input first, since using the front and back camera simultaneously is not supported.
+        [self.session removeInput:self.videoDeviceInput];
+        
+        if ( [self.session canAddInput:videoDeviceInput] ) {
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:currentVideoDevice];
+            
+            [AAPLCameraViewController setFlashMode:AVCaptureFlashModeAuto forDevice:videoDevice];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectAreaDidChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:videoDevice];
+            
+            [self.session addInput:videoDeviceInput];
+            self.videoDeviceInput = videoDeviceInput;
+        }
+        else {
+            [self.session addInput:self.videoDeviceInput];
+        }
+        
+        AVCaptureConnection *connection = [self.movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+        if ( connection.isVideoStabilizationSupported ) {
+            connection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
+        }
+        
+        [self.session commitConfiguration];
+        
+        dispatch_async( dispatch_get_main_queue(), ^{
             [self.delegate shouldEnableRecordUI:YES];
             [self.delegate shouldEnableCameraUI:YES];
-			self.stillButton.enabled = YES;
-		} );
-	} );
+            self.stillButton.enabled = YES;
+        } );
+    } );
 }
 
 - (IBAction)snapStillImage:(id)sender

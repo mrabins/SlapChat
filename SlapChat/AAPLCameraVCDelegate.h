@@ -1,5 +1,5 @@
 //
-//  Header.h
+//  AAPLCameraVCDelegate.h
 //  DevChat
 //
 //  Created by Mark Price on 7/12/16.
@@ -23,4 +23,4 @@
 
 @end
 
-#endif /* Header_h */
+#endif /* AAPLCameraVCDelegate_h */

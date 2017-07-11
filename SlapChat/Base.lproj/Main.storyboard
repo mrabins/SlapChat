@@ -21,6 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d52-XO-pZ0" customClass="AAPLPreviewView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEu-yV-KME">
                                 <rect key="frame" x="298" y="28" width="69" height="48"/>
                                 <constraints>
@@ -28,9 +32,12 @@
                                     <constraint firstAttribute="height" constant="48" id="npG-kv-E7D"/>
                                 </constraints>
                                 <state key="normal" image="camera_icon_snap"/>
+                                <connections>
+                                    <action selector="changeCameraButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ydx-ht-WUC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyw-ey-aiT">
-                                <rect key="frame" x="156" y="601" width="63" height="58"/>
+                                <rect key="frame" x="156.5" y="601" width="63" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="6qS-JK-AfY"/>
                                     <constraint firstAttribute="height" constant="58" id="HA1-ag-v2e"/>
@@ -38,11 +45,10 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="63" id="t08-Hk-R3r"/>
                                 </constraints>
                                 <state key="normal" image="createsnap_btn"/>
+                                <connections>
+                                    <action selector="recordButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xfB-xE-jic"/>
+                                </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d52-XO-pZ0" customClass="AAPLPreviewView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -57,7 +63,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="ZEu-yV-KME" id="K1G-dX-NI4"/>
                         <outlet property="previewView" destination="d52-XO-pZ0" id="8qT-7L-v8c"/>
+                        <outlet property="recordButton" destination="cyw-ey-aiT" id="D6f-Os-can"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
