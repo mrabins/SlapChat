@@ -109,6 +109,9 @@
                                                 <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="uRh-L3-s2d" eventType="touchUpInside" id="0Pr-xL-T8k"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.27450980392156865" green="0.59215686274509804" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
@@ -141,6 +144,10 @@
                             <constraint firstItem="j95-Jy-0HR" firstAttribute="top" secondItem="kll-pF-thZ" secondAttribute="bottom" id="rEe-1C-d9L"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="0Av-zi-1fG" id="7UZ-d5-qF6"/>
+                        <outlet property="passwordTextField" destination="hx9-wf-Yia" id="XxX-3n-st2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJA-D8-fTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

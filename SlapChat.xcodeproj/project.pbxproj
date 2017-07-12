@@ -18,6 +18,7 @@
 		138E310B1F15949800036C45 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E310A1F15949800036C45 /* RoundTextField.swift */; };
 		138E310F1F1598DD00036C45 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E310E1F1598DD00036C45 /* RoundedButton.swift */; };
 		138E31111F159A3900036C45 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138E31101F159A3900036C45 /* LogInVC.swift */; };
+		13EC6B571F15EE6E0098C9E8 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC6B561F15EE6E0098C9E8 /* AuthService.swift */; };
 		346D27769A5915E1635815F7 /* Pods_SlapChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD1A14E66238C7C7D3DBF3A /* Pods_SlapChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		138E310A1F15949800036C45 /* RoundTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
 		138E310E1F1598DD00036C45 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		138E31101F159A3900036C45 /* LogInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
+		13EC6B561F15EE6E0098C9E8 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2AFE5F8D8CDC997D7FC3D03B /* Pods-SlapChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlapChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlapChat/Pods-SlapChat.release.xcconfig"; sourceTree = "<group>"; };
 		3FD1A14E66238C7C7D3DBF3A /* Pods_SlapChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlapChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91DA9E388742319D073A1D8C /* Pods-SlapChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlapChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlapChat/Pods-SlapChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		13642E661F1183D1008174AB /* SlapChat */ = {
 			isa = PBXGroup;
 			children = (
+				13EC6B551F15EE4C0098C9E8 /* Services */,
 				13A0614F1F15271800748FC2 /* Protocols */,
 				13642E951F1202C0008174AB /* Controller */,
 				13642E941F1202B6008174AB /* View */,
@@ -127,6 +130,14 @@
 				13642E8C1F12029C008174AB /* AAPLCameraVCDelegate.h */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		13EC6B551F15EE4C0098C9E8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				13EC6B561F15EE6E0098C9E8 /* AuthService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		6725673CDF4EF1B180D4EC00 /* Frameworks */ = {
@@ -279,6 +290,7 @@
 				138E310B1F15949800036C45 /* RoundTextField.swift in Sources */,
 				13642E911F12029C008174AB /* AAPLCameraViewController.m in Sources */,
 				13642E921F12029C008174AB /* AAPLPreviewView.m in Sources */,
+				13EC6B571F15EE6E0098C9E8 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,27 +9,35 @@
 import UIKit
 
 class LogInVC: UIViewController {
-
+    
+    
+    @IBOutlet weak var emailTextField: RoundTextField!
+    @IBOutlet weak var passwordTextField: RoundTextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        if let email = emailTextField.text, let password = passwordTextField.text, (email.characters.count > 6 && password.characters.count > 6) {
+            
+            // Call the login service
+            AuthService.instance.login(email: email, password: password)
+            
+        } else {
+            let alert = UIAlertController(title: "Username and Password Required", message: "You must enter both a username and password with a minimum of at least 6 characters", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+            
+        }
+        
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
