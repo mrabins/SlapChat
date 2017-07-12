@@ -120,6 +120,8 @@
                                     <constraint firstItem="lED-PV-daN" firstAttribute="top" secondItem="YGF-qR-YhS" secondAttribute="top" constant="110" id="LTf-El-2kS"/>
                                     <constraint firstItem="0Av-zi-1fG" firstAttribute="leading" secondItem="YGF-qR-YhS" secondAttribute="leading" constant="51" id="UHE-Mq-dYb"/>
                                     <constraint firstItem="voH-TO-jrj" firstAttribute="top" secondItem="hx9-wf-Yia" secondAttribute="bottom" constant="26" id="UfF-2I-DUG"/>
+                                    <constraint firstItem="voH-TO-jrj" firstAttribute="leading" secondItem="YGF-qR-YhS" secondAttribute="leading" constant="51" id="aq8-Cx-JYF"/>
+                                    <constraint firstAttribute="trailing" secondItem="voH-TO-jrj" secondAttribute="trailing" constant="51" id="ce8-Rt-waj"/>
                                     <constraint firstItem="hx9-wf-Yia" firstAttribute="leading" secondItem="YGF-qR-YhS" secondAttribute="leading" constant="51" id="dO9-LR-8fJ"/>
                                     <constraint firstItem="voH-TO-jrj" firstAttribute="centerX" secondItem="YGF-qR-YhS" secondAttribute="centerX" id="eRT-Ec-Ocz"/>
                                     <constraint firstItem="lED-PV-daN" firstAttribute="top" secondItem="YGF-qR-YhS" secondAttribute="top" constant="110" id="ln8-kM-Mvf"/>
@@ -142,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJA-D8-fTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-527.20000000000005" y="141.67916041979012"/>
+            <point key="canvasLocation" x="924" y="139"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -201,6 +203,7 @@
                         <outlet property="cameraButton" destination="ZEu-yV-KME" id="K1G-dX-NI4"/>
                         <outlet property="previewView" destination="d52-XO-pZ0" id="8qT-7L-v8c"/>
                         <outlet property="recordButton" destination="cyw-ey-aiT" id="D6f-Os-can"/>
+                        <segue destination="uRh-L3-s2d" kind="presentation" identifier="LoginVCSegue" id="0ha-0c-2wu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

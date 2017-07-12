@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ViewController: AAPLCameraViewController, AAPLCameraVCDelegate {
 
@@ -20,6 +21,17 @@ class ViewController: AAPLCameraViewController, AAPLCameraVCDelegate {
 
         super.viewDidLoad()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard Auth.auth().currentUser != nil else {
+            // Load login VC
+            performSegue(withIdentifier: "LoginVCSegue", sender: nil)
+
+            return
+        }
     }
 
     @IBAction func changeCameraButtonTapped(_ sender: Any) {

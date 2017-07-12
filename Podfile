@@ -8,5 +8,6 @@ target 'SlapChat' do
   # Pods for SlapChat
 	pod 'Firebase/Core'
     pod 'Firebase/Storage'
+    pod 'Firebase/Auth'
 
 end
