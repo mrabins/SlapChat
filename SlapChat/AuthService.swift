@@ -19,30 +19,32 @@ class AuthService {
     func login(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                if errorCode == AuthErrorCode.userNotFound {
-                    Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-                        if error != nil {
-                            // Show Error to User
-                        } else {
-                            if user?.uid != nil {
-                                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-                                    if error != nil {
-                                        // Show Error to user
-                                    } else {
-                                        // we have successfully logged in
-                                    }
-                                })
+                if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                    if errorCode == AuthErrorCode.userNotFound {
+                        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                            if error != nil {
+                                // Show Error to User
+                            } else {
+                                if user?.uid != nil {
+                                    Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
+                                        if error != nil {
+                                            // Show Error to user
+                                        } else {
+                                            // we have successfully logged in
+                                        }
+                                    })
+                                }
                             }
-                        }
-                    })
+                        })
+                    } else {
+                        // Handle all other errors
+                    }
+                    
                 } else {
-                    // Handle all other errors
+                    //Handle Success
                 }
                 
-            } else {
-                //Handle Success
             }
-            
         }
     }
 }
