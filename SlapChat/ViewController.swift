@@ -27,9 +27,7 @@ class ViewController: AAPLCameraViewController, AAPLCameraVCDelegate {
         super.viewDidAppear(animated)
         
         guard Auth.auth().currentUser != nil else {
-            // Load login VC
             performSegue(withIdentifier: "LoginVCSegue", sender: nil)
-
             return
         }
     }
