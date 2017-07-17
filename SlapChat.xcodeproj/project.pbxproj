@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132E99A41F1C17DA00DCAD49 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132E99A31F1C17DA00DCAD49 /* DataService.swift */; };
+		132E99A61F1C1B7000DCAD49 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132E99A51F1C1B7000DCAD49 /* UsersVC.swift */; };
+		132E99A81F1C1CB300DCAD49 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132E99A71F1C1CB300DCAD49 /* UserCell.swift */; };
+		132E99AA1F1C629000DCAD49 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132E99A91F1C629000DCAD49 /* User.swift */; };
+		132E99AD1F1C645000DCAD49 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132E99AC1F1C645000DCAD49 /* Constants.swift */; };
 		13642E681F1183D1008174AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13642E671F1183D1008174AB /* AppDelegate.swift */; };
 		13642E6A1F1183D1008174AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13642E691F1183D1008174AB /* ViewController.swift */; };
 		13642E6D1F1183D1008174AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13642E6B1F1183D1008174AB /* Main.storyboard */; };
@@ -23,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		132E99A31F1C17DA00DCAD49 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		132E99A51F1C1B7000DCAD49 /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
+		132E99A71F1C1CB300DCAD49 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		132E99A91F1C629000DCAD49 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		132E99AC1F1C645000DCAD49 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		13642E641F1183D1008174AB /* SlapChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlapChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13642E671F1183D1008174AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13642E691F1183D1008174AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		132E99AB1F1C644800DCAD49 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				132E99AC1F1C645000DCAD49 /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		13642E5B1F1183D1008174AB = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +98,7 @@
 		13642E661F1183D1008174AB /* SlapChat */ = {
 			isa = PBXGroup;
 			children = (
+				132E99AB1F1C644800DCAD49 /* Util */,
 				13EC6B551F15EE4C0098C9E8 /* Services */,
 				13A0614F1F15271800748FC2 /* Protocols */,
 				13642E951F1202C0008174AB /* Controller */,
@@ -98,6 +117,7 @@
 		13642E931F1202B0008174AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				132E99A91F1C629000DCAD49 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -109,6 +129,7 @@
 				13642E901F12029C008174AB /* AAPLPreviewView.m */,
 				138E310A1F15949800036C45 /* RoundTextField.swift */,
 				138E310E1F1598DD00036C45 /* RoundedButton.swift */,
+				132E99A71F1C1CB300DCAD49 /* UserCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -120,6 +141,7 @@
 				13642E8E1F12029C008174AB /* AAPLCameraViewController.m */,
 				13642E691F1183D1008174AB /* ViewController.swift */,
 				138E31101F159A3900036C45 /* LogInVC.swift */,
+				132E99A51F1C1B7000DCAD49 /* UsersVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -136,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				13EC6B561F15EE6E0098C9E8 /* AuthService.swift */,
+				132E99A31F1C17DA00DCAD49 /* DataService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -283,13 +306,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				132E99A41F1C17DA00DCAD49 /* DataService.swift in Sources */,
 				13642E6A1F1183D1008174AB /* ViewController.swift in Sources */,
 				138E310F1F1598DD00036C45 /* RoundedButton.swift in Sources */,
 				13642E681F1183D1008174AB /* AppDelegate.swift in Sources */,
 				138E31111F159A3900036C45 /* LogInVC.swift in Sources */,
+				132E99A61F1C1B7000DCAD49 /* UsersVC.swift in Sources */,
 				138E310B1F15949800036C45 /* RoundTextField.swift in Sources */,
+				132E99AD1F1C645000DCAD49 /* Constants.swift in Sources */,
 				13642E911F12029C008174AB /* AAPLCameraViewController.m in Sources */,
+				132E99AA1F1C629000DCAD49 /* User.swift in Sources */,
 				13642E921F12029C008174AB /* AAPLPreviewView.m in Sources */,
+				132E99A81F1C1CB300DCAD49 /* UserCell.swift in Sources */,
 				13EC6B571F15EE6E0098C9E8 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

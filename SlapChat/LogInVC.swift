@@ -25,10 +25,6 @@ class LogInVC: UIViewController {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
         if let email = emailTextField.text, let password = passwordTextField.text, (email.characters.count > 6 && password.characters.count > 6) {
-            
-            // Call the login service
-            
-            
             AuthService.instance.login(email: email, password: password, onComplete: { (errorMessage, data) in
                 guard errorMessage == nil else {
                     self.alertHandler(title: "Authentication Error", message: errorMessage!)
@@ -39,9 +35,6 @@ class LogInVC: UIViewController {
         } else {
             alertHandler(title: "Username and Password Required", message: "You must enter both a username and password with a minimum of at least 6 characters")
         }
-        
-        
-        
     }
     
     func alertHandler(title: String, message: String) {

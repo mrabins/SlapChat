@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WZQ-rA-WH5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -152,6 +153,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJA-D8-fTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="924" y="139"/>
+        </scene>
+        <!--UsersVC-->
+        <scene sceneID="WRa-mz-d75">
+            <objects>
+                <viewController id="WZQ-rA-WH5" customClass="UsersVC" customModule="SlapChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iWZ-rh-EWB"/>
+                        <viewControllerLayoutGuide type="bottom" id="d6T-CE-yu6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Sq-Eo-hCY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="acM-eC-JEw">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="LnB-gz-r3W" customClass="UserCell" customModule="SlapChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LnB-gz-r3W" id="9Zu-lW-cUb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JamesBondDude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHe-FH-2TE">
+                                                    <rect key="frame" x="8" y="7.5" width="244" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="244" id="8ru-cV-pru"/>
+                                                        <constraint firstAttribute="height" constant="30" id="lwt-H7-n4D"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DHe-FH-2TE" firstAttribute="leading" secondItem="9Zu-lW-cUb" secondAttribute="leadingMargin" id="2d1-6E-rWS"/>
+                                                <constraint firstItem="DHe-FH-2TE" firstAttribute="centerY" secondItem="9Zu-lW-cUb" secondAttribute="centerY" id="iyk-et-Xg3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="firstNameLabal" destination="DHe-FH-2TE" id="S5t-8y-e7u"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6rJ-2o-12a">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="barTintColor" red="0.27450980390000002" green="0.59215686270000001" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="acM-eC-JEw" secondAttribute="trailing" id="1KN-57-PzC"/>
+                            <constraint firstItem="acM-eC-JEw" firstAttribute="leading" secondItem="8Sq-Eo-hCY" secondAttribute="leading" id="1td-a5-ffI"/>
+                            <constraint firstItem="acM-eC-JEw" firstAttribute="top" secondItem="6rJ-2o-12a" secondAttribute="bottom" id="3x3-Qx-MRC"/>
+                            <constraint firstItem="d6T-CE-yu6" firstAttribute="top" secondItem="acM-eC-JEw" secondAttribute="bottom" id="ET8-WP-sB6"/>
+                            <constraint firstAttribute="trailing" secondItem="6rJ-2o-12a" secondAttribute="trailing" id="cDB-6D-34E"/>
+                            <constraint firstItem="6rJ-2o-12a" firstAttribute="leading" secondItem="8Sq-Eo-hCY" secondAttribute="leading" id="clq-A5-gku"/>
+                            <constraint firstItem="6rJ-2o-12a" firstAttribute="top" secondItem="8Sq-Eo-hCY" secondAttribute="top" id="sb5-sY-184"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="usersTableView" destination="acM-eC-JEw" id="opp-Gw-PgZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tZN-mu-271" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1837.5999999999999" y="135.38230884557723"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

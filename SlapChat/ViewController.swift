@@ -25,11 +25,13 @@ class ViewController: AAPLCameraViewController, AAPLCameraVCDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        performSegue(withIdentifier: "LoginVCSegue", sender: nil)
+
         
-        guard Auth.auth().currentUser != nil else {
-            performSegue(withIdentifier: "LoginVCSegue", sender: nil)
-            return
-        }
+//        guard Auth.auth().currentUser != nil else {
+//            performSegue(withIdentifier: "LoginVCSegue", sender: nil)
+//            return
+//        }
     }
 
     @IBAction func changeCameraButtonTapped(_ sender: Any) {
