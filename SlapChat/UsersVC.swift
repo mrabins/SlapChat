@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 class UsersVC: UIViewController {
     
@@ -15,6 +16,27 @@ class UsersVC: UIViewController {
     
     var users = [User]()
     var selectedUsers = Dictionary<String, User>()
+    
+    private var _snapData: Data?
+    private var _videoURL: URL?
+    
+    var snapData: Data? {
+        set {
+            _snapData = newValue
+        } get {
+            return _snapData
+        }
+    }
+    
+    var videoURL: URL? {
+        set {
+            _videoURL = newValue
+        } get {
+         return _videoURL
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +47,7 @@ class UsersVC: UIViewController {
         
         firebaseUserRequest()
         
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     func firebaseUserRequest() {
@@ -50,6 +73,37 @@ class UsersVC: UIViewController {
             self.usersTableView.reloadData()
         }
     }
+    
+    @IBAction func sendSlapButtonPressed(sender: AnyObject) {
+        if let url = _videoURL {
+            let videoName = "\(NSUUID().uuidString)\(url)"
+            let ref = DataService.instance.videoStorageRef.child(videoName)
+            _ = ref.putFile(from: url, metadata: nil, completion: { (meta: StorageMetadata?, err: NSError?) in
+                if err != nil {
+                    print("Error Uploading Video: \(String(describing: err?.localizedDescription))")
+                } else {
+                    let downloadURL = meta!.downloadURL()
+                    // save downloadURL Somewhere
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } as? (StorageMetadata?, Error?) -> Void)
+
+        } else if let slap = _snapData {
+            let ref = DataService.instance.imageStorageRef.child("\(NSUUID().uuidString).jpg")
+            _ = ref.putData(slap, metadata: nil, completion: { (meta: StorageMetadata?, err: NSError?) in
+                
+                if err != nil {
+                    print("Error Uploading snapshot: \(String(describing: err?.localizedDescription))")
+                } else {
+                    let downloadURL = meta!.downloadURL()
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+            } as? (StorageMetadata?, Error?) -> Void)
+            
+        }
+        // ** TODO - Add Loading Spinner
+    }
 }
 
 extension UsersVC: UITableViewDelegate {
@@ -61,10 +115,15 @@ extension UsersVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        navigationItem.rightBarButtonItem?.isEnabled = true
         let cell = usersTableView.cellForRow(at: indexPath) as! UserCell
         cell.setCheckmark(selected: true)
         let user = users[indexPath.row]
         selectedUsers[user.uid] = user
+        
+        if selectedUsers.count <= 0 {
+            navigationItem.backBarButtonItem?.isEnabled = false
+        }
     }
 }
 

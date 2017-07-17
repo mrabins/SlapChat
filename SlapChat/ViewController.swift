@@ -15,6 +15,8 @@ class ViewController: AAPLCameraViewController, AAPLCameraVCDelegate {
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     
+    let userSegue = "UserSegue"
+    
     override func viewDidLoad() {
         delegate = self
         _previewView = previewView
@@ -25,13 +27,11 @@ class ViewController: AAPLCameraViewController, AAPLCameraVCDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        performSegue(withIdentifier: "LoginVCSegue", sender: nil)
 
-        
-//        guard Auth.auth().currentUser != nil else {
-//            performSegue(withIdentifier: "LoginVCSegue", sender: nil)
-//            return
-//        }
+        guard Auth.auth().currentUser != nil else {
+            performSegue(withIdentifier: "LoginVCSegue", sender: nil)
+            return
+        }
     }
 
     @IBAction func changeCameraButtonTapped(_ sender: Any) {
@@ -42,6 +42,8 @@ class ViewController: AAPLCameraViewController, AAPLCameraVCDelegate {
     @IBAction func recordButtonTapped(_ sender: Any) {
         toggleMovieRecording()
     }
+    
+    
     
     func shouldEnableCameraUI(_ enable: Bool) {
         cameraButton.isEnabled = enable
@@ -62,7 +64,7 @@ class ViewController: AAPLCameraViewController, AAPLCameraVCDelegate {
     }
     
     func videoRecordingComplete(_ videoURL: URL!) {
-        // Implement
+        performSegue(withIdentifier: userSegue, sender: ["videoURL": videoURL])
     }
     
     func videoRecordingFailed() {
@@ -70,11 +72,29 @@ class ViewController: AAPLCameraViewController, AAPLCameraVCDelegate {
     }
     
     func snapshotTaken(_ snapshotData: Data!) {
-        // Implement
+        performSegue(withIdentifier: userSegue, sender: ["snapshotData": snapshotData])
     }
     
     func snapshotFailed() {
         // implement
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let usersVC = segue.destination as? UsersVC {
+            if let videoDict = sender as? Dictionary<String, URL> {
+                let url = videoDict["videoURL"]
+                usersVC.videoURL = url
+            } else if let snapDict = sender as? Dictionary<String, Data> {
+                let snapData = snapDict["snapshotData"]
+                usersVC.snapData = snapData
+            }
+            
+        }
+    }
+    
+    
+    
+    
+    
 }
 
