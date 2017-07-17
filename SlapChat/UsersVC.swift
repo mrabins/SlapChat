@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 class UsersVC: UIViewController {
     
@@ -32,7 +33,7 @@ class UsersVC: UIViewController {
         set {
             _videoURL = newValue
         } get {
-         return _videoURL
+            return _videoURL
         }
     }
     
@@ -84,10 +85,12 @@ class UsersVC: UIViewController {
                 } else {
                     let downloadURL = meta!.downloadURL()
                     // save downloadURL Somewhere
-                    self.dismiss(animated: true, completion: nil)
+                    DataService.instance.sendMediaSlap(senderUID: (Auth.auth().currentUser?.uid)!, sendingTo: self.selectedUsers, mediaURL: downloadURL!, caption: "Set up")
                 }
-            } as? (StorageMetadata?, Error?) -> Void)
-
+                } as? (StorageMetadata?, Error?) -> Void)
+            
+            self.dismiss(animated: true, completion: nil)
+            
         } else if let slap = _snapData {
             let ref = DataService.instance.imageStorageRef.child("\(NSUUID().uuidString).jpg")
             _ = ref.putData(slap, metadata: nil, completion: { (meta: StorageMetadata?, err: NSError?) in
@@ -96,13 +99,12 @@ class UsersVC: UIViewController {
                     print("Error Uploading snapshot: \(String(describing: err?.localizedDescription))")
                 } else {
                     let downloadURL = meta!.downloadURL()
-                    self.dismiss(animated: true, completion: nil)
                 }
                 
-            } as? (StorageMetadata?, Error?) -> Void)
+                } as? (StorageMetadata?, Error?) -> Void)
+            self.dismiss(animated: true, completion: nil)
             
         }
-        // ** TODO - Add Loading Spinner
     }
 }
 
@@ -144,7 +146,4 @@ extension UsersVC: UITableViewDataSource {
         cell?.updateUI(user: user)
         return cell!
     }
-    
-    
-    
 }
